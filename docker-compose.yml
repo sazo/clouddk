@@ -10,7 +10,6 @@ services:
 
   clouddk-dev:
     build:
-      dockerfile: docker/Dockerfile
       context: .
     working_dir: /app
     volumes:
@@ -19,7 +18,6 @@ services:
   clouddk:
     image: sazo/clouddk
     build:
-        dockerfile: docker/Dockerfile
         context: .
     entrypoint: php clouddk.php
     working_dir: /app

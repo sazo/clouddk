@@ -4,5 +4,5 @@ A cli for https://api.cloud.dk
 
 ### Usage
 ```
-docker run --rm -it -e API_KEY=SomeApiKey sazo/clouddk cloudserver:list
+docker run --rm -it -e API_KEY=SomeApiKey sazo/clouddk --help
 ```

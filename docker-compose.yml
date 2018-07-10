@@ -1,0 +1,25 @@
+version: '3'
+
+services:
+  composer:
+    image: composer
+    working_dir: /app
+    volumes:
+      - .:/app
+      - .:/tmp
+
+  clouddk-dev:
+    build:
+      dockerfile: docker/Dockerfile
+      context: .
+    working_dir: /app
+    volumes:
+      - .:/app
+
+  clouddk:
+    image: sazo/clouddk
+    build:
+        dockerfile: docker/Dockerfile
+        context: .
+    entrypoint: php clouddk.php
+    working_dir: /app

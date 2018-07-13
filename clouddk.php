@@ -9,6 +9,11 @@ $dot = new \Dotenv\Dotenv(__DIR__);
 $dot->safeLoad();
 $app = new Silly\Application('CloudDK CLI - Interactive with cloud.dk api', 0.1);
 
+if($_ENV['API_KEY'] === null){
+    echo 'API_KEY need to be specified'.PHP_EOL;
+    exit(0);
+}
+
 $container = new \DI\Container();
 $container->set('client', function (){
     return new \GuzzleHttp\Client([

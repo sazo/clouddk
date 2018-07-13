@@ -16,6 +16,14 @@ class CloudServer extends Collection
         return $this->get('hostname');
     }
     
+    public function getBooted() : bool{
+        return $this->get('booted');
+    }
+    
+    public function getIp() : string{
+        return $this->getNetworkInterfaces()->first()->getAddress();
+    }
+    
     /**
      * @param array $cloudServers
      *

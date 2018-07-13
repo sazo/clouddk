@@ -14,6 +14,8 @@ services:
     working_dir: /app
     volumes:
       - .:/app
+      - ~/.ssh/id_rsa.pub:/root/.ssh/id_rsa.pub
+      - ~/.ssh/id_rsa:/root/.ssh/id_rsa
 
   clouddk:
     image: sazo/clouddk

@@ -1,12 +1,4 @@
 <?php
-/**
- * Created by PhpStorm.
- * User: daniel
- * Date: 7/7/18
- * Time: 6:46 PM
- */
-
-
 namespace Sazo\CloudDk\Commands;
 
 use Symfony\Component\Console\Input\InputArgument;
@@ -20,13 +12,16 @@ class DeleteServer extends BaseCommand
     {
         $this->setName('cloudserver:delete')
             ->setDescription('Delete a server');
-        $this->addArgument('id', InputArgument::REQUIRED, 'Id for the server');
+        $this->addArgument('id', InputArgument::IS_ARRAY, 'Id for the server');
     }
     
     protected function execute(InputInterface $input, OutputInterface $output)
     {
-        $response = $this->client->delete('cloudservers/'.$input->getArgument('id'));
-        $output->writeln($response->getBody()->getContents());
+        foreach ($input->getArgument('id') as $id){
+            $response = $this->client->delete('cloudservers/'.$id);
+            $output->writeln($response->getBody()->getContents(), OutputInterface::VERBOSITY_DEBUG);
+            $output->writeln('OK, server deleted');
+        }
     }
     
 }

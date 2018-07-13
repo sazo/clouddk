@@ -28,8 +28,10 @@ $app->addCommands([
     new \Sazo\CloudDk\Commands\ListServer(null, $container),
     new \Sazo\CloudDk\Commands\CreateServer(null, $container),
     new \Sazo\CloudDk\Commands\DeleteServer(null, $container),
-    new \Sazo\CloudDk\Commands\SecureServer(null, $container),
-    new \Sazo\CloudDk\Commands\RootPassword(null, $container)
+    new \Sazo\CloudDk\Commands\Secure\SecureServer(null, $container),
+    new \Sazo\CloudDk\Commands\Secure\SshKeyCopy(null, $container),
+    new \Sazo\CloudDk\Commands\RootPassword(null, $container),
+    new \Sazo\CloudDk\Commands\Apps\Rancher\SetupWorker(null, $container)
 ]);
 $app->useContainer($container);
 $app->run();

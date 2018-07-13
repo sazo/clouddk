@@ -19,9 +19,13 @@ class NetworkInterface
         return $this->network->get('identifier');
     }
     
-    public function getAddress() : string
+    public function getAddresses() : string
     {
         return (new Collection($this->network->get('ipAddresses')))->implode('address', ',');
+    }
+    
+    public function getAddress(){
+        return (new Collection($this->network->get('ipAddresses')))->first()['address'];
     }
     
     public function getLabel() : string

@@ -33,13 +33,14 @@ class ListServer extends BaseCommand
                 $hostData[] = $host->getId();
                 $hostData[] = $host->getHostname();
                 $hostData[] = $host->getNetworkInterfaces()->map(function(NetworkInterface $item){
-                    return $item->getAddress();
+                    return $item->getAddresses();
                 })->__toString();
+                $hostData[] = (int)$host->getBooted();
                 $data[] = $hostData;
             }
             $table = new Table($output);
             $table
-                ->setHeaders(['Id','Host', 'Ips'])
+                ->setHeaders(['Id','Host', 'Ips', 'Booted'])
                 ->setRows($data)
             ;
             $table->render();
